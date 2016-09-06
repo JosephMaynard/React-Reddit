@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Post from './Post';
 
 class PostList extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      posts: [],
+      subreddits: ['javascript', 'programming', 'ProgrammerHumor', 'webdev'],
+    };
+  };
+
   componentDidMount() {
-    this.loadData();
-  }
-
-  loadData() {
-    let subreddits = ['javascript', 'programming', 'ProgrammerHumor', 'webdev'];
-
-      fetch('https://www.reddit.com/r/' + subreddits.join('+') +'/.json')
-        .then(response => response.json())
-        .then(json => {
-          console.log(json);
-          this.setState({
-            data: json,        
+    const _this = this;
+    this.serverRequest =
+      axios
+        .get('https://www.reddit.com/r/' + this.state.subreddits.join('+') + '/.json')
+        .then(function(result) {    
+          console.log(result);
+          _this.setState({
+            posts: result.data.data.children,
           });
         });
   }
 
-
   render() {
     return (
       <div>
-        {this.props.data.map(function(result) {
-           return <Post key={data.id} data={data}/>;
+        {this.state.posts.map(function(result) {
+           return <Post key={result.data.id} data={result.data}/>;
         })}
       </div>
     );
