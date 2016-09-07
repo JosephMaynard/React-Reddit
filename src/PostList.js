@@ -9,15 +9,14 @@ class PostList extends Component {
 
     this.state = {
       posts: [],
-      subreddits: ['javascript', 'programming', 'ProgrammerHumor', 'webdev'],
     };
-  };
+  }
 
   componentDidMount() {
     const _this = this;
     this.serverRequest =
       axios
-        .get('https://www.reddit.com/r/' + this.state.subreddits.join('+') + '/.json')
+        .get(`https://www.reddit.com/r/${ this.props.subreddits.join('+') }/.json`)
         .then(function(result) {    
           console.log(result);
           _this.setState({
@@ -29,9 +28,7 @@ class PostList extends Component {
   render() {
     return (
       <div>
-        {this.state.posts.map(function(result) {
-           return <Post key={result.data.id} data={result.data}/>;
-        })}
+        {this.state.posts.map(result => <Post key={result.data.id} data={result.data} />)}
       </div>
     );
   }

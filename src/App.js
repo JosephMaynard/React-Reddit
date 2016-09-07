@@ -4,6 +4,15 @@ import './App.css';
 import PostList from './PostList';
 
 class App extends Component {
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      subreddits: ['javascript', 'programming', 'ProgrammerHumor', 'webdev'],
+    };
+  }
+
   render() {
     return (
       <div className="App">
@@ -11,7 +20,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React Reddit</h2>
         </div>
-        <PostList />
+        <PostList subreddits={this.state.subreddits} />
       </div>
     );
   }
