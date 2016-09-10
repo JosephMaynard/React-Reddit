@@ -3,11 +3,10 @@ import './Post.css';
 
 class Post extends Component {
 
-
   render() {
     return (
       <div  className="Post">
-        <div className="thumbnail">
+        <div className="thumbnail" style={ {'background': '#' + Math.floor(Math.random()*16777215).toString(16)} }>
           { this.props.data.thumbnail && this.props.data.thumbnail !== 'self' && this.props.data.thumbnail !== 'default'
             ? <img src={this.props.data.thumbnail} alt={this.props.data.title} />
             : <p>{this.props.data.subreddit.substr(0,1).toUpperCase()}</p>
@@ -23,4 +22,4 @@ class Post extends Component {
   }
 }
 
-export default Post; 
+export default Post;

@@ -20,7 +20,7 @@ class PostList extends Component {
       axios
         .get(`https://www.reddit.com/r/${ this.props.subreddits.join('+') }/.json?raw_json=1`)
         .then(result => {   
-          console.log(result);
+          //console.log(result);
           _this.setState({
             posts: result.data.data.children,
           });
@@ -36,7 +36,7 @@ class PostList extends Component {
             }&after=${
               this.state.loadedPosts[this.state.loadedPosts.length - 1]}&raw_json=1`)
         .then(result => {
-          console.log(result);
+          //console.log(result);
           const newPosts = [];
           const newPostsLoaded = [];
           for(const post of result.data.data.children){
