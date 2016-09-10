@@ -2,6 +2,7 @@
   "name": "react-reddit",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://josephmaynard.co.uk/reactreddit",
   "devDependencies": {
     "react-scripts": "0.4.1"
   },
