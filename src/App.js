@@ -9,9 +9,11 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
     this.changeSubreddits = this.changeSubreddits.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
 
     this.state = {
       subreddits: ['javascript', 'programming', 'ProgrammerHumor', 'webdev'],
+      showMenu: false,
     };
   }
 
@@ -19,7 +21,12 @@ class App extends Component {
     this.setState({
       subreddits,
     });
-    console.log(this.children);
+  }
+
+  toggleMenu() {
+    this.setState({
+      showMenu: !this.state.showMenu,
+    });
   }
 
   render() {
@@ -30,7 +37,9 @@ class App extends Component {
           <h2>Welcome to React Reddit</h2>
         </div>
         <PostList subreddits={this.state.subreddits} />
-        <Menu subreddits={this.state.subreddits} changeSubreddits={this.changeSubreddits} />
+        {this.state.showMenu 
+          ? <Menu subreddits={this.state.subreddits} changeSubreddits={this.changeSubreddits} toggleMenu={this.toggleMenu} />
+          : null}
 
       </div>
     );

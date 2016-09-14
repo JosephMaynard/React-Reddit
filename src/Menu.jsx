@@ -18,7 +18,7 @@ class Menu extends Component {
     return (
       <div className="Menu">
         <AddSubreddit addSubreddit={this.addSubreddit} />
-        {this.props.subreddits.map(result => <div>{result}</div>)}
+        {this.props.subreddits.map((result, index) => <div key={index}>{result}</div>)}
       </div>
       );
   }

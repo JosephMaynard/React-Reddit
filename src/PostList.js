@@ -15,23 +15,30 @@ class PostList extends Component {
   }
 
   componentDidMount() {
-    const _this = this;
+    this.loadInitialPosts();
+  }
+
+  loadInitialPosts() {
+    const that = this;
     this.serverRequest =
       axios
-        .get(`https://www.reddit.com/r/${ this.props.subreddits.join('+') }/.json?raw_json=1`)
-        .then(result => {   
-          //console.log(result);
-          _this.setState({
+        .get(`https://www.reddit.com/r/${this.props.subreddits.join('+')}/.json?raw_json=1`)
+        .then(result => {
+          that.setState({
             posts: result.data.data.children,
           });
         });
   }
 
+  componentDidReceiveProps() {
+    this.loadInitialPosts();
+  }
+
   loadMorePosts() {
-    const _this = this;
+    const that = this;
     this.serverRequest =
       axios
-        .get(`https://www.reddit.com/r/${ this.props.subreddits.join('+') }/.json?count=${
+        .get(`https://www.reddit.com/r/${this.props.subreddits.join('+')}/.json?count=${
               this.state.postNumber + 25
             }&after=${
               this.state.loadedPosts[this.state.loadedPosts.length - 1]}&raw_json=1`)
@@ -39,16 +46,17 @@ class PostList extends Component {
           //console.log(result);
           const newPosts = [];
           const newPostsLoaded = [];
-          for(const post of result.data.data.children){
-            if(this.state.loadedPosts.indexOf(post.data.name) === -1){
+          for (const post of result.data.data.children) {
+            console.log(post.data.name);
+            if (this.state.loadedPosts.indexOf(post.data.name) === -1) {
               newPosts.push(post);
               newPostsLoaded.push(post.data.name);
             }
           }
-          _this.setState({
-            posts: _this.state.posts.concat(newPosts),
-            loadedPosts: _this.state.loadedPosts.concat(newPostsLoaded),
-            postNumber: _this.state.postNumber + 25,
+          that.setState({
+            posts: that.state.posts.concat(newPosts),
+            loadedPosts: that.state.loadedPosts.concat(newPostsLoaded),
+            postNumber: that.state.postNumber + 25,
           });
         });
   }
@@ -56,7 +64,7 @@ class PostList extends Component {
   render() {
     return (
       <div>
-        {this.state.posts.map(result => <Post key={result.data.name + (Math.round(Math.random() * 1e8)).toString(36)} data={result.data} />)
+        {this.state.posts.map((result, index) => <Post key={index} data={result.data} />)
         }
         <button onClick={this.loadMorePosts.bind(this)}>Load More</button>
       </div>

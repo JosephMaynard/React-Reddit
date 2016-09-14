@@ -3,6 +3,52 @@ import './Post.css';
 
 class Post extends Component {
 
+  constructor(props, context) {
+    super(props, context);
+    this.showPreviewToggle = this.showPreviewToggle.bind(this);
+    this.createMarkup = this.createMarkup.bind(this);
+
+    this.state = {
+      showPreview: false,
+      showPreviewButtonDisabled: false,
+      preview: '',
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.data.selftext_html && this.props.data.selftext_html !== '') {
+      this.setState ({
+        preview: this.props.data.selftext_html,
+      });
+    } else if (this.props.data.selftext && this.props.data.selftext !== '') {
+      this.setState ({
+        preview: this.props.data.selftext,
+      });
+    } else if (this.props.data.secure_media_embed && Object.keys(this.props.data.secure_media_embed).length > 0) {
+      this.setState ({
+        preview: this.props.data.secure_media_embed,
+      });
+    } else if (this.props.data.preview.images[0].source.url && this.props.data.preview.images[0].source.url !== '' && Object.keys(this.props.data.preview.images[0].source.url).length > 0) {
+      this.setState ({
+        preview: `<img src="${ this.props.data.preview.images[0].source.url }" />`,
+      });
+    } else {
+      this.setState ({
+        showPreviewButtonDisabled: true,
+      });
+    }
+  }
+
+  createMarkup() {
+    return { __html: this.state.preview };
+   }
+
+  showPreviewToggle() {
+    this.setState({
+          showPreview: !this.state.showPreview,
+        });
+  }
+
   render() {
     return (
       <div  className="Post">
@@ -16,7 +62,9 @@ class Post extends Component {
         Submitted {
           Math.round(((new Date()).getTime()  - (parseInt(this.props.data.created_utc) * 1000)) / 3600000)
         } hours ago to <a href={`https://reddit.com/r/${this.props.data.subreddit}`} target="_blank"  rel="noopener noreferrer">/r/{this.props.data.subreddit}</a> by <a href={`https://reddit.com/user/${this.props.data.author}`} target="_blank"  rel="noopener noreferrer">{this.props.data.author}</a>
-          <br/><a href={`https://reddit.com${this.props.data.permalink}`} target="_blank" rel="noopener noreferrer">Comments ({this.props.data.num_comments})</a></p>
+          <br/><b>&uarr;</b>{this.props.data.ups} <a href={`https://reddit.com${this.props.data.permalink}`} target="_blank" rel="noopener noreferrer">Comments ({this.props.data.num_comments})</a></p>
+        <button onClick={this.showPreviewToggle} disabled={this.state.showPreviewButtonDisabled}>+</button>
+        {this.state.showPreview ? (<div className="preview" dangerouslySetInnerHTML={ this.createMarkup() } />) : null }
       </div>
     );
   }
