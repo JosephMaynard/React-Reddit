@@ -1,0 +1,18 @@
+
+.App-logo {
+  height: 70px;
+}
+
+.Header {
+	background-color: #222;
+	padding: 15px 10px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: top;
+}
+
+.App-intro {
+  font-size: large;
+}

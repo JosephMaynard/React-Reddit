@@ -17,6 +17,7 @@ class Menu extends Component {
     console.log(this.props);
     return (
       <div className="Menu">
+      	<button onClick={this.props.toggleMenu}>-</button>
         <AddSubreddit addSubreddit={this.addSubreddit} />
         {this.props.subreddits.map((result, index) => <div key={index}>{result}</div>)}
       </div>
