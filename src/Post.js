@@ -26,9 +26,13 @@ class Post extends Component {
       });
     } else if (this.props.data.secure_media_embed && Object.keys(this.props.data.secure_media_embed).length > 0) {
       this.setState ({
-        preview: this.props.data.secure_media_embed,
+        preview: this.props.data.secure_media_embed.content,
       });
-    } else if (this.props.data.preview.images[0].source.url && this.props.data.preview.images[0].source.url !== '' && Object.keys(this.props.data.preview.images[0].source.url).length > 0) {
+    } else if (this.props.data.preview && this.props.data.preview.images[0].variants.gif && this.props.data.preview.images[0].variants.gif.source.url !== '' && Object.keys(this.props.data.preview.images[0].variants.gif.source.url).length > 0) {
+      this.setState ({
+        preview: `<img src="${ this.props.data.preview.images[0].variants.gif.source.url }" />`,
+      });
+    } else if (this.props.data.preview && this.props.data.preview.images  && this.props.data.preview.images[0].source.url !== '' && Object.keys(this.props.data.preview.images[0].source.url).length > 0) {
       this.setState ({
         preview: `<img src="${ this.props.data.preview.images[0].source.url }" />`,
       });
@@ -51,7 +55,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div  className="Post">
+      <div className="Post">
         <div className="thumbnail" style={ {'background': '#' + Math.floor(Math.random()*16777215).toString(16)} }>
           { this.props.data.thumbnail && this.props.data.thumbnail !== 'self' && this.props.data.thumbnail !== 'default'
             ? <img src={this.props.data.thumbnail} alt={this.props.data.title} />
@@ -60,7 +64,7 @@ class Post extends Component {
         </div>
         <p><a href={this.props.data.url} className="title" target="_blank" rel="noopener noreferrer">{this.props.data.title}</a> ({this.props.data.domain})<br/>
         Submitted {
-          Math.round(((new Date()).getTime()  - (parseInt(this.props.data.created_utc) * 1000)) / 3600000)
+          Math.round(((new Date()).getTime()  - (parseInt(this.props.data.created_utc, 10) * 1000)) / 3600000)
         } hours ago to <a href={`https://reddit.com/r/${this.props.data.subreddit}`} target="_blank"  rel="noopener noreferrer">/r/{this.props.data.subreddit}</a> by <a href={`https://reddit.com/user/${this.props.data.author}`} target="_blank"  rel="noopener noreferrer">{this.props.data.author}</a>
           <br/><b>&uarr;</b>{this.props.data.ups} <a href={`https://reddit.com${this.props.data.permalink}`} target="_blank" rel="noopener noreferrer">Comments ({this.props.data.num_comments})</a></p>
         <button onClick={this.showPreviewToggle} disabled={this.state.showPreviewButtonDisabled}>{
@@ -73,5 +77,9 @@ class Post extends Component {
     );
   }
 }
+
+Post.proptypes = {
+  data: React.PropTypes.object.isRequired,
+};
 
 export default Post;

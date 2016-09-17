@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Post from './Post';
+import './PostList.css';
 
 class PostList extends Component {
 
@@ -19,6 +20,10 @@ class PostList extends Component {
   }
 
   loadInitialPosts() {
+    this.setState({
+      posts: [],
+      postNumber: 25,
+    });
     const that = this;
     this.serverRequest =
       axios
@@ -47,7 +52,7 @@ class PostList extends Component {
           const newPosts = [];
           const newPostsLoaded = [];
           for (const post of result.data.data.children) {
-            console.log(post.data.name);
+            // console.log(post.data.name);
             if (this.state.loadedPosts.indexOf(post.data.name) === -1) {
               newPosts.push(post);
               newPostsLoaded.push(post.data.name);
@@ -63,7 +68,7 @@ class PostList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="PostList">
         {this.state.posts.map((result, index) => <Post key={index} data={result.data} />)
         }
         <button onClick={this.loadMorePosts.bind(this)}>Load More</button>

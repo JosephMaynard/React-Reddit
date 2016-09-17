@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddSubreddit from './AddSubreddit';
+import Subreddit from './Subreddit';
 import './Menu.css';
 
 class Menu extends Component {
@@ -7,22 +8,42 @@ class Menu extends Component {
   constructor(props, context) {
     super(props, context);
     this.addSubreddit = this.addSubreddit.bind(this);
+    this.removeSubreddit = this.removeSubreddit.bind(this);
   }
 
   addSubreddit(subredddit) {
     this.props.changeSubreddits(this.props.subreddits.concat(subredddit));
   }
 
+  removeSubreddit(arrayPosition) {
+    const newArray = Array.from(this.props.subreddits);
+    newArray.splice(arrayPosition, 1);
+    this.props.changeSubreddits(newArray);
+  }
+
   render() {
     console.log(this.props);
     return (
       <div className="Menu">
-      	<button onClick={this.props.toggleMenu}>-</button>
+        <button onClick={this.props.toggleMenu}>-</button>
         <AddSubreddit addSubreddit={this.addSubreddit} />
-        {this.props.subreddits.map((result, index) => <div key={index}>{result}</div>)}
+        {this.props.subreddits.map((result, index) => (
+          <Subreddit
+            key={index}
+            arrayPosition={index}
+            name={result}
+            removeSubreddit={this.removeSubreddit}
+          />)
+        )}
       </div>
       );
   }
 }
+
+Menu.propTypes = {
+  subreddits: React.PropTypes.array.isRequired,
+  changeSubreddits: React.PropTypes.func.isRequired,
+  toggleMenu: React.PropTypes.func.isRequired,
+};
 
 export default Menu;

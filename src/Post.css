@@ -38,7 +38,7 @@
 }
 .Post .thumbnail p{
     margin: auto;
-    font-size: 2em;
+    font-size: 32px;
     line-height: 2.3em;
 }
 .Post button{
@@ -51,7 +51,7 @@
 	padding: 10px 0;
 	width: 100%;
 }
-.Post .preview img{
+.Post .preview img, .Post .preview iframe{
 	display: block;
 	max-width: 100%;
 	margin: 0 auto;
