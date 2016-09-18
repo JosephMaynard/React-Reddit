@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './App.css';
 import PostList from './PostList';
 import Header from './Header';
@@ -35,10 +36,19 @@ class App extends Component {
       <div className="App">
         <Header showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} />
         <PostList subreddits={this.state.subreddits} />
-        {this.state.showMenu 
-          ? <Menu subreddits={this.state.subreddits} changeSubreddits={this.changeSubreddits} toggleMenu={this.toggleMenu} />
-          : null}
-
+        <ReactCSSTransitionGroup
+          transitionName="Menu-slide"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}
+        >
+          {this.state.showMenu
+            ? <Menu
+              subreddits={this.state.subreddits}
+              changeSubreddits={this.changeSubreddits}
+              toggleMenu={this.toggleMenu}
+            />
+            : null}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

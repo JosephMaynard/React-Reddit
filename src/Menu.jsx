@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AddSubreddit from './AddSubreddit';
 import Subreddit from './Subreddit';
 import './Menu.css';
@@ -25,8 +26,13 @@ class Menu extends Component {
     console.log(this.props);
     return (
       <div className="Menu">
-        <button onClick={this.props.toggleMenu}>-</button>
+        <button className="closeBtn" onClick={this.props.toggleMenu}>x</button>
         <AddSubreddit addSubreddit={this.addSubreddit} />
+        <ReactCSSTransitionGroup
+          transitionName="Subreddit-slide"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
         {this.props.subreddits.map((result, index) => (
           <Subreddit
             key={index}
@@ -35,6 +41,7 @@ class Menu extends Component {
             removeSubreddit={this.removeSubreddit}
           />)
         )}
+        </ReactCSSTransitionGroup>
       </div>
       );
   }

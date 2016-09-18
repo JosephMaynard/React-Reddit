@@ -7,4 +7,44 @@
 	bottom: 0;
 	background: rgba(0,0,0,0.8);
 	color: #FFF;
+	padding: 10px;
+}
+.Menu > .closeBtn{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.Subreddit-slide-enter {
+  opacity: 0.01;
+  -webkit-transform: translateX(120%);
+  -ms-transform: translateX(120%);
+  -o-transform: translateX(120%);
+  transform: translateX(120%);
+}
+
+.Subreddit-slide-enter.Subreddit-slide-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.Subreddit-slide-leave {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.Subreddit-slide-leave.Subreddit-slide-leave-active {
+  opacity: 0.01;
+  -webkit-transform: translateX(120%);
+  -ms-transform: translateX(120%);
+  -o-transform: translateX(120%);
+  transform: translateX(120%);
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
 }
