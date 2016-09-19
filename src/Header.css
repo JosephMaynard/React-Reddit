@@ -1,18 +1,35 @@
 
 .App-logo {
-  height: 70px;
+  height: 50px;
 }
 
 .Header {
 	background-color: #222;
+}
+.Header .inner {
+	margin: 0 auto;
+	max-width: 1200px;
+	box-sizing: border-box;
 	padding: 15px 10px;
 	color: white;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
-	align-items: top;
+	align-items: center;
 }
-
 .App-intro {
   font-size: large;
+}
+.Header button {
+	width: 30px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    padding: 0;
+    line-height: 29px;
+}
+.Header h2 {
+	padding: 0;
+	margin: 0;
 }

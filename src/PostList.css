@@ -1,3 +1,7 @@
+.PostList {
+	margin: 0 auto;
+	max-width: 1200px;
+}
 .PostList > button{
 	display: block;
     width: 100%;

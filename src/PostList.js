@@ -7,6 +7,9 @@ class PostList extends Component {
 
   constructor(props, context) {
     super(props, context);
+    this.loadInitialPosts = this.loadInitialPosts.bind(this);
+    this.loadMorePosts = this.loadMorePosts.bind(this);
+
 
     this.state = {
       posts: [],
@@ -71,7 +74,7 @@ class PostList extends Component {
       <div className="PostList">
         {this.state.posts.map((result, index) => <Post key={index} data={result.data} />)
         }
-        <button onClick={this.loadMorePosts.bind(this)}>Load More</button>
+        <button onClick={this.loadMorePosts}>Load More</button>
       </div>
     );
   }
