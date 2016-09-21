@@ -1,7 +1,12 @@
+#React Reddit
+
+This is a side project I'm using to learn React. It uses Axios to pull data in from [Reddit's JSON API](https://www.reddit.com/dev/api/), and React to display it.
+
+You can see the site [here](https://josephmaynard.co.uk/reactreddit/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how to perform common tasks.  
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
+ You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/template/README.md).
 
 ## Table of Contents
 
