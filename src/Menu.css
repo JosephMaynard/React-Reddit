@@ -1,19 +1,20 @@
 .Menu {
 	position: fixed;
-	width: 400px;
+	width: 300px;
 	height: 100%;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	background: #FFF;
 	color: #333;
-	padding: 10px;
+	padding: 50px 20px 20px;
 	box-shadow: -8px 0px 16px rgba(0,0,0,0.2);
 }
 .Menu > .closeBtn{
 	position: absolute;
 	top: 10px;
 	right: 10px;
+	height: 30px;
 }
 
 .Subreddit-slide-enter {

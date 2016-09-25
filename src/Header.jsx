@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
+import MenuBtn from './MenuBtn.svg';
 import './Header.css';
 
-class Header extends Component {
+const Header = (props) => (
+  <div className="Header">
+    <div className="inner">
+      <img src={logo} className="App-logo" alt="logo" />
+      <h2>Welcome to React Reddit</h2>
+      <img src={MenuBtn} className="MenuBtn" alt="Menu" onClick={props.toggleMenu} />
+    </div>
+  </div>
+);
 
-  constructor(props, context) {
-    super(props, context);
-  }
-
-  render() {
-    return (
-      <div className="Header">
-        <div className="inner">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React Reddit</h2>
-          <button onClick={this.props.toggleMenu} disabled={this.props.showMenu}>{
-          this.props.showMenu
-          ? ('-')
-          : ('\u2699')
-        }</button>
-        </div>
-      </div>
-    );
-  }
-}
+Header.propTypes = {
+  toggleMenu: React.PropTypes.func.isRequired,
+};
 
 export default Header;

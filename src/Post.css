@@ -56,3 +56,7 @@
 	max-width: 100%;
 	margin: 0 auto;
 }
+
+.Post .PreviewBtn{
+	height: 30px;
+}
