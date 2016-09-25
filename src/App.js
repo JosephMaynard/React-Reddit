@@ -4,6 +4,7 @@ import './App.css';
 import PostList from './PostList';
 import Header from './Header';
 import Menu from './Menu';
+import Overlay from './Overlay';
 
 class App extends Component {
 
@@ -36,6 +37,15 @@ class App extends Component {
       <div className="App">
         <Header showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} />
         <PostList subreddits={this.state.subreddits} />
+        <ReactCSSTransitionGroup
+          transitionName="Overlay-fade"
+          transitionEnterTimeout={300}
+          transitionLeaveTimeout={300}
+        >
+          {this.state.showMenu
+            ? <Overlay toggleMenu={this.toggleMenu} />
+            : null}
+        </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
           transitionName="Menu-slide"
           transitionEnterTimeout={300}

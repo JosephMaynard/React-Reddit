@@ -31,3 +31,21 @@
   transform: translateX(120%);
   transition: transform 300ms ease-in;
 }
+
+.Overlay-fade-enter {
+  opacity: 0;
+}
+
+.Overlay-fade-enter.Overlay-fade-enter-active {
+  transition: opacity 300ms ease-out;
+  opacity: 1;
+}
+
+.Overlay-fade-leave {
+  opacity: 1;
+}
+
+.Overlay-fade-leave.Overlay-fade-leave-active {
+  opacity: 0;  
+  transition: opacity 300ms ease-in;
+}

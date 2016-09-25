@@ -5,9 +5,10 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0,0,0,0.8);
-	color: #FFF;
+	background: #FFF;
+	color: #333;
 	padding: 10px;
+	box-shadow: -8px 0px 16px rgba(0,0,0,0.2);
 }
 .Menu > .closeBtn{
 	position: absolute;
