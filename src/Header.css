@@ -1,16 +1,17 @@
-
 .App-logo {
   height: 50px;
   padding: 0 5px;
 }
-
 .MenuBtn {
   height: 30px;
-  padding: 0 12px;
+  padding: 0 16px;
 }
-
 .Header {
 	background-color: #222;
+}
+.Header h2{
+	font-weight: normal;
+	margin: 0;
 }
 .Header .inner {
 	margin: 0 auto;
@@ -25,4 +26,14 @@
 }
 .App-intro {
   font-size: large;
+}
+@media screen and (max-width: 640px) {
+	.App-logo {
+	  height: 38px;
+	  padding: 0;
+	}
+	.MenuBtn {
+	  height: 20px;
+	  padding: 0 18px;
+	}
 }
