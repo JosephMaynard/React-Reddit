@@ -1,10 +1,16 @@
 import React from 'react';
+import CloseBtn from './CloseBtn.svg';
 import './Subreddit.css';
 
 const Subreddit = (props) => (
   <div className="Subreddit">
     <p>{props.arrayPosition} /r/{props.name}</p>
-    <button onClick={() => props.removeSubreddit(props.arrayPosition)}>-</button>
+    <img
+      src={CloseBtn}
+      className="RemoveSubreddit"
+      alt="Remove Subreddit"
+      onClick={() => props.removeSubreddit(props.arrayPosition)}
+    />
   </div>
 );
 

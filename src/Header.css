@@ -5,6 +5,7 @@
 .MenuBtn {
   height: 30px;
   padding: 0 16px;
+  cursor: pointer;
 }
 .Header {
 	background-color: #222;

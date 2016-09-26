@@ -17,12 +17,12 @@ class AddSubreddit extends Component {
   }
 
   render() {
-  	return(
-	  <div>
-	    <input type="text" placeholder="Enter subreddit" onChange={this.handleChange} />
-	    <button onClick={() => this.props.addSubreddit(this.state.newSubReddit)}>Add</button>
-	  </div>
-	);
+    return (
+      <div className="AddSubreddit">
+        <input type="text" placeholder="Enter subreddit" onChange={this.handleChange} />
+        <button onClick={() => this.props.addSubreddit(this.state.newSubReddit)}>Add</button>
+      </div>
+    );
   }
 }
 

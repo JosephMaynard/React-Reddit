@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import AddSubreddit from './AddSubreddit';
-import Subreddit from './Subreddit';
 import './Menu.css';
+import SubredditGroup from './SubredditGroup';
 import CloseBtn from './CloseBtn.svg';
 
 class Menu extends Component {
@@ -27,22 +25,12 @@ class Menu extends Component {
     console.log(this.props);
     return (
       <div className="Menu">
-        <img src={CloseBtn} className="closeBtn" onClick={this.props.toggleMenu} />
-        <AddSubreddit addSubreddit={this.addSubreddit} />
-        <ReactCSSTransitionGroup
-          transitionName="Subreddit-slide"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-        >
-        {this.props.subreddits.map((result, index) => (
-          <Subreddit
-            key={index}
-            arrayPosition={index}
-            name={result}
-            removeSubreddit={this.removeSubreddit}
-          />)
-        )}
-        </ReactCSSTransitionGroup>
+        <img src={CloseBtn} alt="Close" className="closeBtn" onClick={this.props.toggleMenu} />
+        <SubredditGroup
+          subreddits={this.props.subreddits}
+          removeSubreddit={this.removeSubreddit}
+          addSubreddit={this.addSubreddit}
+        />
       </div>
       );
   }

@@ -79,7 +79,10 @@ class Post extends Component {
           }
           alt="Preview"
         />
-        {this.state.showPreview ? (<div className="preview" dangerouslySetInnerHTML={ this.createMarkup() } />) : null }
+        {this.state.showPreview
+          ? (<div className="preview" dangerouslySetInnerHTML={this.createMarkup()} />)
+          : null
+        }
       </div>
     );
   }

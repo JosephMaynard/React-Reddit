@@ -59,6 +59,7 @@
 .Post .PreviewBtn{
 	height: 20px;
 	padding: 10px;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 640px) {

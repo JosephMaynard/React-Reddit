@@ -1,0 +1,9 @@
+.AddSubreddit {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: top;
+}
+.AddSubreddit input {
+	flex: 1 1 auto;
+}
