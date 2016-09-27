@@ -1,0 +1,26 @@
+.PostText {	
+	display: inline-block;
+	vertical-align:top;
+	margin: 0 0 0 30px;
+	flex: 2 0px;
+}
+.PostText p {
+	margin: 0;
+}
+.PostText a {
+	text-decoration: none;	
+}
+.title, .title:visited {
+	color: #333;
+	font-size: 1.6em;
+}
+.PostText .UpVoteArrow{
+	height: 13px;
+	padding: 0 3px 0 0;
+}
+
+@media screen and (max-width: 640px) {
+	.Post {
+		margin: 0 0 0 15px;
+	}
+}

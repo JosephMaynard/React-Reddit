@@ -7,18 +7,6 @@
 	align-items: top;
 	flex-wrap: wrap;
 }
-.Post p {
-	display: inline-block;
-	vertical-align:top;
-	margin: 0 0 0 30px;
-	flex: 2 0px;
-}
-.title, .title:visited {
-	color: #333;
-	text-decoration: none;
-	font-size: 1.6em;
-}
-
 .Post .thumbnail {
 	overflow: hidden;
 	border-radius: 50%;
@@ -71,9 +59,5 @@
 	.Post .thumbnail p{
 	    font-size: 22px;
 	    line-height: 2em;
-	}
-
-	.Post p {
-		margin: 0 0 0 15px;
 	}
 }

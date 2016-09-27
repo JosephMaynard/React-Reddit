@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Post.css';
 import CloseBtn from './CloseBtn.svg';
 import PreviewBtn from './PreviewBtn.svg';
+import PostText from './PostText';
 
 class Post extends Component {
 
@@ -64,11 +65,17 @@ class Post extends Component {
             : <p>{this.props.data.subreddit.substr(0,1).toUpperCase()}</p>
           }
         </div>
-        <p><a href={this.props.data.url} className="title" target="_blank" rel="noopener noreferrer">{this.props.data.title}</a> ({this.props.data.domain})<br/>
-        Submitted {
-          Math.round(((new Date()).getTime()  - (parseInt(this.props.data.created_utc, 10) * 1000)) / 3600000)
-        } hours ago to <a href={`https://reddit.com/r/${this.props.data.subreddit}`} target="_blank"  rel="noopener noreferrer">/r/{this.props.data.subreddit}</a> by <a href={`https://reddit.com/user/${this.props.data.author}`} target="_blank"  rel="noopener noreferrer">{this.props.data.author}</a>
-          <br/><b>&uarr;</b>{this.props.data.ups} <a href={`https://reddit.com${this.props.data.permalink}`} target="_blank" rel="noopener noreferrer">Comments ({this.props.data.num_comments})</a></p>
+        <PostText
+          url={this.props.data.url}
+          title={this.props.data.title}
+          domain={this.props.data.domain}
+          subreddit={this.props.data.subreddit}
+          submitted={Math.round(((new Date()).getTime() - (parseInt(this.props.data.created_utc, 10) * 1000)) / 3600000)}
+          ups={this.props.data.ups}
+          permalink={this.props.data.permalink}
+          comments={this.props.data.num_comments}
+          author={this.props.data.author}
+        />
         <img
           className="PreviewBtn"
           onClick={this.showPreviewToggle}
