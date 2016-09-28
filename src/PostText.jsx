@@ -42,7 +42,7 @@ PostText.propTypes = {
   title: React.PropTypes.string.isRequired,
   domain: React.PropTypes.string.isRequired,
   subreddit: React.PropTypes.string.isRequired,
-  submitted: React.PropTypes.string.isRequired,
+  submitted: React.PropTypes.number.isRequired,
   ups: React.PropTypes.number.isRequired,
   permalink: React.PropTypes.string.isRequired,
   comments: React.PropTypes.number.isRequired,

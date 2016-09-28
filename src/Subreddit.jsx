@@ -4,7 +4,7 @@ import './Subreddit.css';
 
 const Subreddit = (props) => (
   <div className="Subreddit">
-    <p>{props.arrayPosition} /r/{props.name}</p>
+    <p>{props.name}</p>
     <img
       src={CloseBtn}
       className="RemoveSubreddit"

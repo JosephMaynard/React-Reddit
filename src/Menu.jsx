@@ -12,7 +12,9 @@ class Menu extends Component {
   }
 
   addSubreddit(subredddit) {
-    this.props.changeSubreddits(this.props.subreddits.concat(subredddit));
+    if (this.props.subreddits.indexOf(subredddit) === -1) {
+      this.props.changeSubreddits(this.props.subreddits.concat(subredddit));
+    }
   }
 
   removeSubreddit(arrayPosition) {

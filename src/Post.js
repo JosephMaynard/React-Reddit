@@ -18,29 +18,29 @@ class Post extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.data.selftext_html && this.props.data.selftext_html !== '') {
-      this.setState ({
+      this.setState({
         preview: this.props.data.selftext_html,
       });
     } else if (this.props.data.selftext && this.props.data.selftext !== '') {
-      this.setState ({
+      this.setState({
         preview: this.props.data.selftext,
       });
     } else if (this.props.data.secure_media_embed && Object.keys(this.props.data.secure_media_embed).length > 0) {
-      this.setState ({
+      this.setState({
         preview: this.props.data.secure_media_embed.content,
       });
     } else if (this.props.data.preview && this.props.data.preview.images[0].variants.gif && this.props.data.preview.images[0].variants.gif.source.url !== '' && Object.keys(this.props.data.preview.images[0].variants.gif.source.url).length > 0) {
-      this.setState ({
+      this.setState({
         preview: `<img src="${ this.props.data.preview.images[0].variants.gif.source.url }" />`,
       });
     } else if (this.props.data.preview && this.props.data.preview.images  && this.props.data.preview.images[0].source.url !== '' && Object.keys(this.props.data.preview.images[0].source.url).length > 0) {
-      this.setState ({
+      this.setState({
         preview: `<img src="${ this.props.data.preview.images[0].source.url }" />`,
       });
     } else {
-      this.setState ({
+      this.setState({
         showPreviewButtonDisabled: true,
       });
     }
@@ -48,7 +48,7 @@ class Post extends Component {
 
   createMarkup() {
     return { __html: this.state.preview };
-   }
+  }
 
   showPreviewToggle() {
     this.setState({

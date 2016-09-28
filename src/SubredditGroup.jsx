@@ -6,7 +6,7 @@ import './SubredditGroup.css';
 
 const SubredditGroup = (props) => (
   <div className="SubredditGroup">
-    <h3>Show these Subreddits:</h3>
+    <h2>Show these Subreddits:</h2>
     <ReactCSSTransitionGroup
       transitionName="Subreddit-slide"
       transitionEnterTimeout={500}
@@ -14,7 +14,7 @@ const SubredditGroup = (props) => (
     >
     {props.subreddits.map((result, index) => (
       <Subreddit
-        key={index}
+        key={result}
         arrayPosition={index}
         name={result}
         removeSubreddit={props.removeSubreddit}
