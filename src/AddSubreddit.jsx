@@ -24,7 +24,7 @@ class AddSubreddit extends Component {
             placeholder="Enter subreddit"
             ref={(input) => { this.subredditInput = input; }}
           />
-          <button >Add</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     );
