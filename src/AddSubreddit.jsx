@@ -6,28 +6,33 @@ class AddSubreddit extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      newSubReddit: '',
-    };
+    this.addSubredditHandler = this.addSubredditHandler.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ newSubReddit: event.target.value });
+  addSubredditHandler(event) {
+    event.preventDefault();
+    this.props.addSubreddit(this.subredditInput.value);
+    this.subredditInput.value = '';
   }
 
   render() {
     return (
       <div className="AddSubreddit">
-        <input type="text" placeholder="Enter subreddit" onChange={this.handleChange} />
-        <button onClick={() => this.props.addSubreddit(this.state.newSubReddit)}>Add</button>
+        <form onSubmit={this.addSubredditHandler}>
+          <input
+            type="text"
+            placeholder="Enter subreddit"
+            ref={(input) => { this.subredditInput = input; }}
+          />
+          <button >Add</button>
+        </form>
       </div>
     );
   }
 }
 
 AddSubreddit.proptypes = {
-  addSubreddit: React.PropTypes.func,
+  addSubreddit: React.PropTypes.func.isRequired,
 };
 
 export default AddSubreddit;
