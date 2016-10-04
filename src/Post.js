@@ -67,8 +67,8 @@ class Post extends Component {
   }
 
   render() {
-    const details = this.props.data;
-    console.log(details);
+    // const details = this.props.data;
+    // console.log(details);
 
     return (
       <div className="Post">

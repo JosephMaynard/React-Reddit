@@ -43,7 +43,7 @@ class App extends Component {
           transitionLeaveTimeout={300}
         >
           {this.state.showMenu
-            ? <Overlay onClick={this.toggleMenu} />
+            ? <Overlay toggleMenu={this.toggleMenu} />
             : null}
         </ReactCSSTransitionGroup>
         <ReactCSSTransitionGroup
