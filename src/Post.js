@@ -10,6 +10,7 @@ class Post extends Component {
     super(props, context);
     this.showPreviewToggle = this.showPreviewToggle.bind(this);
     this.createMarkup = this.createMarkup.bind(this);
+    this.createThumbnail = this.createThumbnail.bind(this);
 
     this.state = {
       showPreview: false,
@@ -46,6 +47,15 @@ class Post extends Component {
     }
   }
 
+  createThumbnail() {
+    if(this.props.data.over_18) {
+      return (<span>NSFW</span>);
+    } else if (this.props.data.thumbnail && this.props.data.thumbnail !== 'self' && this.props.data.thumbnail !== 'default') {
+      return (<img src={this.props.data.thumbnail} alt={this.props.data.title} />);
+    }
+    return (<p>{this.props.data.subreddit.substr(0,1).toUpperCase()}</p>); 
+  }
+
   createMarkup() {
     return { __html: this.state.preview };
   }
@@ -57,13 +67,13 @@ class Post extends Component {
   }
 
   render() {
+    const details = this.props.data;
+    console.log(details);
+
     return (
       <div className="Post">
         <div className="thumbnail" style={ {'background': '#' + Math.floor(Math.random()*16777215).toString(16)} }>
-          { this.props.data.thumbnail && this.props.data.thumbnail !== 'self' && this.props.data.thumbnail !== 'default'
-            ? <img src={this.props.data.thumbnail} alt={this.props.data.title} />
-            : <p>{this.props.data.subreddit.substr(0,1).toUpperCase()}</p>
-          }
+          { this.createThumbnail() }
         </div>
         <PostText
           url={this.props.data.url}
