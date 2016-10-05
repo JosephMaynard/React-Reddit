@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   toggleMenu() {
-    console.log('toggleMenu');
     this.setState({
       showMenu: !this.state.showMenu,
     });
