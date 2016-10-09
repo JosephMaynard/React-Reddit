@@ -70,8 +70,10 @@ class Post extends Component {
 
   pickColor(data) {
     if (data.over_18) return '#D50000';
-    else if (typeof this.props.subreddits[data.subreddit] === undefined) return '#000';
-    return this.props.subreddits[data.subreddit].color;
+    else if (this.props.subreddits[data.subreddit] !== undefined) {
+      return this.props.subreddits[data.subreddit].color;
+    };
+    return '#424242';
   }
 
   createMarkup() {
