@@ -17,19 +17,28 @@ const SubredditGroup = (props) => (
         key={result}
         arrayPosition={index}
         name={result}
-        removeSubreddit={props.removeSubreddit}
+        color={props.subredditsObject.subreddits[result].color}
+        subredditIndex={props.subredditIndex}
+        deleteSubreddit={props.deleteSubreddit}
+        changeColor={props.changeColor}
       />)
     )}
     </ReactCSSTransitionGroup>
     <h3>Add Subreddit:</h3>
-    <AddSubreddit addSubreddit={props.addSubreddit} />
+    <AddSubreddit
+      subredditIndex={props.subredditIndex}
+      addSubreddit={props.addSubreddit}
+    />
   </div>
 );
 
 SubredditGroup.propTypes = {
   subreddits: React.PropTypes.array.isRequired,
-  removeSubreddit: React.PropTypes.func.isRequired,
+  subredditsObject: React.PropTypes.object.isRequired,
+  subredditIndex: React.PropTypes.number.isRequired,
   addSubreddit: React.PropTypes.func.isRequired,
+  deleteSubreddit: React.PropTypes.func.isRequired,
+  changeColor: React.PropTypes.func.isRequired,
 };
 
 export default SubredditGroup;

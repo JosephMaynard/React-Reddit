@@ -23,6 +23,7 @@ class PostList extends Component {
   }
 
   loadInitialPosts() {
+    const subredditsToLoad = Object.keys(this.props.subreddits.subreddits);
     this.setState({
       posts: [],
       postNumber: 25,
@@ -30,7 +31,7 @@ class PostList extends Component {
     const that = this;
     this.serverRequest =
       axios
-        .get(`https://www.reddit.com/r/${this.props.subreddits.join('+')}/.json?raw_json=1`)
+        .get(`https://www.reddit.com/r/${subredditsToLoad.join('+')}/.json?raw_json=1`)
         .then(result => {
           that.setState({
             posts: result.data.data.children,
@@ -44,9 +45,10 @@ class PostList extends Component {
 
   loadMorePosts() {
     const that = this;
+    const subredditsToLoad = Object.keys(this.props.subreddits.subreddits);
     this.serverRequest =
       axios
-        .get(`https://www.reddit.com/r/${this.props.subreddits.join('+')}/.json?count=${
+        .get(`https://www.reddit.com/r/${subredditsToLoad.join('+')}/.json?count=${
               this.state.postNumber + 25
             }&after=${
               this.state.loadedPosts[this.state.loadedPosts.length - 1]}&raw_json=1`)
@@ -72,8 +74,13 @@ class PostList extends Component {
   render() {
     return (
       <div className="PostList">
-        {this.state.posts.map((result, index) => <Post key={index} data={result.data} />)
-        }
+        {this.state.posts.map((result, index) => (
+          <Post
+            key={index}
+            data={result.data}
+            subreddits={this.props.subreddits.subreddits}
+          />
+        ))}
         <button onClick={this.loadMorePosts}>Load More</button>
       </div>
     );

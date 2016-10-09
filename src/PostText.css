@@ -10,9 +10,12 @@
 .PostText a {
 	text-decoration: none;	
 }
-.title, .title:visited {
+.title{
 	color: #333;
 	font-size: 1.6em;
+}
+.title:visited {
+	color: #888;
 }
 .PostText .UpVoteArrow{
 	height: 13px;

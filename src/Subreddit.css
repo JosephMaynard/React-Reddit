@@ -10,6 +10,20 @@
 .Subreddit p{
 	padding: 0;
 	margin: 0;
+	flex: 2 0px;
+}
+.Subreddit label{
+	width: 25px;
+	height: 25px;
+	margin: 0 10px 0 0;
+	flex: 0 0 25px;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+.Subreddit input{
+	height: 0;
+    visibility: hidden;
 }
 .Subreddit .RemoveSubreddit{
 	height:15px;

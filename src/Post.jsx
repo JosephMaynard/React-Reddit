@@ -11,6 +11,7 @@ class Post extends Component {
     this.showPreviewToggle = this.showPreviewToggle.bind(this);
     this.createMarkup = this.createMarkup.bind(this);
     this.createThumbnail = this.createThumbnail.bind(this);
+    this.pickColor = this.pickColor.bind(this);
 
     this.state = {
       showPreview: false,
@@ -58,10 +59,19 @@ class Post extends Component {
     const { data } = this.props;
     if (data.over_18) {
       return (<span>NSFW</span>);
-    } else if (data.thumbnail && data.thumbnail !== 'self' && data.thumbnail !== 'default') {
+    } else if (data.thumbnail
+                && data.thumbnail !== 'self'
+                && data.thumbnail !== 'default'
+                && data.thumbnail !== 'image') {
       return (<img src={data.thumbnail} alt={data.title} />);
     }
     return (<p>{data.subreddit.substr(0, 1).toUpperCase()}</p>);
+  }
+
+  pickColor(data) {
+    if (data.over_18) return '#D50000';
+    else if (typeof this.props.subreddits[data.subreddit] === undefined) return '#000';
+    return this.props.subreddits[data.subreddit].color;
   }
 
   createMarkup() {
@@ -82,7 +92,8 @@ class Post extends Component {
       <div className="Post">
         <div
           className="thumbnail"
-          style={{ background: `#${Math.floor(Math.random() * 16777215).toString(16)}` }}
+          // style={{ background: `#${Math.floor(Math.random() * 16777215).toString(16)}` }}
+          style={{ background: this.pickColor(data) }}
         >
           { this.createThumbnail() }
         </div>
@@ -118,6 +129,7 @@ class Post extends Component {
 
 Post.proptypes = {
   data: React.PropTypes.object.isRequired,
+  subreddits: React.PropTypes.object.isRequired,
 };
 
 export default Post;

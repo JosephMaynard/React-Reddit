@@ -11,7 +11,7 @@ class AddSubreddit extends Component {
 
   addSubredditHandler(event) {
     event.preventDefault();
-    this.props.addSubreddit(this.subredditInput.value);
+    this.props.addSubreddit(this.props.subredditIndex, this.subredditInput.value);
     this.subredditInput.value = '';
   }
 
@@ -23,6 +23,7 @@ class AddSubreddit extends Component {
             type="text"
             placeholder="Enter subreddit"
             ref={(input) => { this.subredditInput = input; }}
+            autoFocus
           />
           <button type="submit">Add</button>
         </form>
@@ -33,6 +34,7 @@ class AddSubreddit extends Component {
 
 AddSubreddit.proptypes = {
   addSubreddit: React.PropTypes.func.isRequired,
+  subredditIndex: React.PropTypes.number.isRequired,
 };
 
 export default AddSubreddit;
