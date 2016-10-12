@@ -15,6 +15,7 @@ class PostList extends Component {
       posts: [],
       loadedPosts: [],
       postNumber: 25,
+      subredditsToLoad: [],
     };
   }
 
@@ -22,11 +23,18 @@ class PostList extends Component {
     this.loadInitialPosts();
   }
 
+  componentWillReceiveProps() {
+    if (Object.keys(this.props.subreddits.subreddits).join(',') !== this.state.subredditsToLoad.join(',')) {
+      this.loadInitialPosts();
+    }
+  }
+
   loadInitialPosts() {
     const subredditsToLoad = Object.keys(this.props.subreddits.subreddits);
     this.setState({
       posts: [],
       postNumber: 25,
+      subredditsToLoad,
     });
     const that = this;
     this.serverRequest =
@@ -37,10 +45,6 @@ class PostList extends Component {
             posts: result.data.data.children,
           });
         });
-  }
-
-  componentDidReceiveProps() {
-    this.loadInitialPosts();
   }
 
   loadMorePosts() {
