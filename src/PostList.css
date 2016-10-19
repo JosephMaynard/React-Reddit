@@ -1,9 +1,14 @@
 .PostList {
 	margin: 0 auto;
 	max-width: 1200px;
+	min-height: 100%;
+	position: relative;
 }
 .PostList > button{
 	display: block;
     width: 100%;
     padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }

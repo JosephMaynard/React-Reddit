@@ -1,0 +1,64 @@
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotateZ(0deg);  }
+	to { -webkit-transform: rotateZ(360deg); }
+}
+@-o-keyframes spin {
+	from { -webkit-transform: rotateZ(0deg);  }
+	to { -webkit-transform: rotateZ(360deg); }
+}
+@-moz-keyframes spin {
+	from { transform: rotateZ(0deg);  }
+	to { transform: rotateZ(360deg); }
+}
+@keyframes spin {
+	from { transform: rotateZ(0deg);  }
+	to { transform: rotateZ(360deg); }
+}
+.spinner {
+	width: 32px;
+	height: 32px;
+	perspective: 400px;
+    background: #222;
+    border-radius: 50%;
+    border: 10px #222 solid;
+}
+.ringContainer {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.ring {
+	width: 32px;
+	height: 32px;
+	background: url(spinnerRing.png);
+	background-size: 100% 100%;
+}
+.ring1 {
+	animation: spin 2s linear infinite;
+}
+.ring2 {
+	animation: spin 3s linear infinite;
+}
+.ring3 {
+	animation: spin 4s linear infinite;
+}
+.ringContainer:nth-child(1) {
+	-webkit-transform: rotateY(65deg) rotateX(-30deg);
+	-ms-transform: rotateY(65deg) rotateX(-30deg);
+	-o-transform: rotateY(65deg) rotateX(-30deg);
+	transform: rotateY(65deg) rotateX(-30deg);
+}
+.ringContainer:nth-child(2) {
+	-webkit-transform: rotateY(-65deg) rotateX(-30deg);
+	-ms-transform: rotateY(-65deg) rotateX(-30deg);
+	-o-transform: rotateY(-65deg) rotateX(-30deg);
+	transform: rotateY(-65deg) rotateX(-30deg);
+}
+.ringContainer:nth-child(3) {
+	-webkit-transform: rotateX(65deg);
+	-ms-transform: rotateX(65deg);
+	-o-transform: rotateX(65deg);
+	transform: rotateX(65deg);
+}

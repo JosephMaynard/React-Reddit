@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Post from './Post';
+import Loading from './Loading';
 import './PostList.css';
 
 class PostList extends Component {
@@ -16,6 +17,7 @@ class PostList extends Component {
       loadedPosts: [],
       postNumber: 25,
       subredditsToLoad: [],
+      loading: true,
     };
   }
 
@@ -34,6 +36,7 @@ class PostList extends Component {
     this.setState({
       posts: [],
       postNumber: 25,
+      loading: true,
       subredditsToLoad,
     });
     const that = this;
@@ -43,6 +46,7 @@ class PostList extends Component {
         .then(result => {
           that.setState({
             posts: result.data.data.children,
+            loading: false,
           });
         });
   }
@@ -76,6 +80,9 @@ class PostList extends Component {
   }
 
   render() {
+    if (this.state.loading){
+      return <Loading />;
+    }
     return (
       <div className="PostList">
         {this.state.posts.map((result, index) => (
