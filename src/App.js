@@ -50,6 +50,19 @@ class App extends Component {
     };
   }
 
+  componentWillMount() {
+    const localStorageRef = localStorage.getItem('subreddits');
+    if (localStorageRef) {
+      this.setState({
+        subreddits: JSON.parse(localStorageRef),
+      }) 
+    }
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('subreddits', JSON.stringify(nextState.subreddits));
+  }
+
   changeSubreddits(subreddits) {
     const newSubreddits = subreddits;
     newSubreddits[0].subreddits = subreddits;
