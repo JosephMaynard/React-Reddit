@@ -8,6 +8,7 @@ const SubredditGroup = (props) => (
   <div className="SubredditGroup">
     <h2>Show these Subreddits:</h2>
     <ReactCSSTransitionGroup
+      component="ul"
       transitionName="Subreddit-slide"
       transitionEnterTimeout={500}
       transitionLeaveTimeout={300}

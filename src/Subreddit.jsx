@@ -5,7 +5,7 @@ import './Subreddit.css';
 class Subreddit extends Component {
   render() {
     return (
-      <div className="Subreddit">
+      <li className="Subreddit">
         <label
           htmlFor={(`${this.props.name}_${this.props.arrayPosition}_${this.props.color}`)}
           style={{ background: this.props.color }}
@@ -25,7 +25,7 @@ class Subreddit extends Component {
           alt="Remove Subreddit"
           onClick={() => this.props.deleteSubreddit(this.props.subredditIndex, this.props.name)}
         />
-      </div>
+      </li>
     );
   }
 }
