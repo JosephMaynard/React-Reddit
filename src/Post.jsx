@@ -110,16 +110,19 @@ class Post extends Component {
           comments={data.num_comments}
           author={data.author}
         />
-        <img
-          className="PreviewBtn"
-          onClick={this.showPreviewToggle}
-          src={
-            this.state.showPreview
-            ? CloseBtn
-            : PreviewBtn
-          }
-          alt="Preview"
-        />
+        {this.state.preview !== ''
+          ? (<img
+            className="PreviewBtn"
+            onClick={this.showPreviewToggle}
+            src={
+              this.state.showPreview
+              ? CloseBtn
+              : PreviewBtn
+            }
+            alt="Preview"
+          />)
+          : null
+        }
         {this.state.showPreview
           ? (<div className="preview" dangerouslySetInnerHTML={this.createMarkup()} />)
           : null
