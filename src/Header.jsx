@@ -9,7 +9,9 @@ const Header = (props) => (
     <div className="Header">
       <div className="inner">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React Reddit</h2>
+        <h2>React Reddit <span>(&nbsp;{
+          Object.keys(props.subreddits).join('\xa0+\xa0')
+        }&nbsp;)</span></h2>
         <img src={MenuBtn} className="MenuBtn" alt="Menu" onClick={props.toggleMenu} />
       </div>
     </div>
@@ -18,6 +20,7 @@ const Header = (props) => (
 
 Header.propTypes = {
   toggleMenu: React.PropTypes.func.isRequired,
+  subreddits: React.PropTypes.array.isRequired,
 };
 
 export default Header;

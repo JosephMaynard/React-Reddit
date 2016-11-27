@@ -11,8 +11,16 @@
 	background-color: #222;
 }
 .Header h2{
-	font-weight: normal;
-	margin: 0;
+    margin: 0 0 0 15px;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Header h2 span{
+    font-weight: normal;
+    font-size: 0.6em;
 }
 .Header .inner {
 	margin: 0 auto;

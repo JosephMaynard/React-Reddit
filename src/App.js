@@ -107,7 +107,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header showMenu={this.state.showMenu} toggleMenu={this.toggleMenu} />
+        <Header
+          showMenu={this.state.showMenu}
+          toggleMenu={this.toggleMenu}
+          subreddits={this.state.subreddits[this.state.currentSubredditGroup].subreddits}
+        />
         <PostList
           subreddits={this.state.subreddits[this.state.currentSubredditGroup]}
         />
