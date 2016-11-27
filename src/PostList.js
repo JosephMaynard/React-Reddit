@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Waypoint from 'react-waypoint';
 import Post from './Post';
 import Loading from './Loading';
 import './PostList.css';
@@ -92,6 +93,9 @@ class PostList extends Component {
             subreddits={this.props.subreddits.subreddits}
           />
         ))}
+        <Waypoint
+          onEnter={this.loadMorePosts}
+        />
         <button onClick={this.loadMorePosts}>Load More</button>
       </div>
     );
